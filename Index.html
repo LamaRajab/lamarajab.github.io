@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" />
+    <link rel="icon" href="MyLogo.svg" type="image/x-icon">
+    <title>Lama Rajab | UI/UX Designer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: DM Sans + Playfair -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo-wrapper">
+                <img src="MyLogo.svg" alt="personal Logo" class="logo">
+            </a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2>Hi, I'm</h2>
+                        <h1><span class="name-highlight">Lama</span>&nbsp;<span class="name-highlight" style="color: #6F52C9;">Rajab</span></h1>
+                        <h2 class="subtitle" style="color: #986BAE;">UI/UX Designer</h2>
+                        <p class="hero-description">I design intuitive, user-centered digital experiences that solve real problems and create meaningful connections.</p>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary view-projects-btn">
+                                View Projects 
+                                <img src="Right Arrow.svg" alt="→" class="btn-icon">
+                            </a>
+                            <a href="#contact" class="btn btn-secondary contact-me-btn">Contact Me</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="profile-wrapper">
+                            <div class="bg-shapes">
+                                <div class="oval oval-purple"></div>
+                                <div class="oval oval-light-purple"></div>
+                                <div class="oval oval-pink"></div>
+                                <div class="ring ring-purple"></div>
+                                <div class="ring ring-pink"></div>
+                                <div class="sphere purple s1"></div>
+                                <div class="sphere purple s2"></div>
+                                <div class="sphere purple s3"></div>
+                                <div class="sphere pink s4"></div>
+                                <div class="sphere pink s5"></div>
+                            </div>
+                            <img src="My Photo.png" alt="Lama Rajab" class="profile-photo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-container">
+                    <div class="about-left-group">
+                        <div class="section-header">
+                            <h2 class="section-title">About Me</h2>
+                            <div class="title-line"></div>
+                        </div>
+                        <div class="about-wrapper">
+                            <div class="about-text-wrapper">
+                                <p class="about-text">I'm an artist and qualified UI / UX Designer with experience in creating <br>user friendly digital experiences. Skilled in various design tools, I blend <br>creativity and detail to craft intuitive, engaging interfaces. I thrive in <br>teamwork and focus on enhancing user interaction.</p>
+                                <button class="btn btn-download" id="downloadCVBtn">
+                                    Download CV 
+                                    <img src="Downloading Updates.svg" alt="↓" class="btn-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-right">
+                        <div class="about-cards-grid">
+                            <div class="about-card">
+                                <div class="card-icon">
+                                    <img src="Google Maps.svg" alt="Icon">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Location</h3>
+                                    <p>Tripoli, Lebanon</p>
+                                </div>
+                            </div>
+                            <div class="about-card">
+                                <div class="card-icon">
+                                    <img src="System Information.svg" alt="Icon">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Tools</h3>
+                                    <p>Figma, Adobe XD, <br>Photoshop, Illustrator</p>
+                                </div>
+                            </div>
+                            <div class="about-card">
+                                <div class="card-icon">
+                                    <img src="Favorite.svg" alt="Icon">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Focus</h3>
+                                    <p>UI Design, UX Research <br>Prototyping</p>
+                                </div>
+                            </div>
+                            <div class="about-card">
+                                <div class="card-icon">
+                                    <img src="Geography.svg" alt="Icon">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Languages</h3>
+                                    <p>Arabic (Native)<br>English (Fluent)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUME SECTION -->
+        <section id="experience" class="resume-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Experience</h2>
+                    <div class="title-line"></div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="resume-tabs-wrapper">
+                    <button class="resume-tab active" data-tab="exp">Experience</button>
+                    <span class="tab-divider"></span>
+                    <button class="resume-tab" data-tab="edu">Education</button>
+                </div>
+
+                <!-- Carousel with snap scroll -->
+                <div class="carousel-wrapper">
+                    <div class="carousel-container" id="carousel-container">
+                        <div class="cards-scrollable" id="cards-scrollable">
+                            <!-- Cards injected via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Dots -->
+                <div class="carousel-dots" id="carousel-dots"></div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="clarity.png" alt="Clarity App">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="project-tag">Mobile App</span>
+                                <span class="project-badge">UI/UX</span>
+                            </div>
+                            <h3 class="project-title">Wellness App</h3>
+                            <p class="project-description">A mobile app for mental health management.</p>
+                            <a href="https://drive.google.com/file/d/1SBvREBTUbxJEBbIQ5WxrrQwhfJEbvB_-/view?usp=sharing" target="_blank" class="project-link">
+                                View Case Study 
+                                <img src="arrow-Right-pink.svg" alt="→" class="link-icon">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="BudgetBites.png" alt="BudgetBites Web App">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="project-tag">Web App</span>
+                                <span class="project-badge">UI/UX</span>
+                            </div>
+                            <h3 class="project-title">BudgetBites</h3>
+                            <p class="project-description">A web app for eating healthy on a budget.</p>
+                            <a href="https://drive.google.com/file/d/1tekiMrG3tvN2Yud1_sT8ga7Y_dmYe2cM/view?usp=sharing" target="_blank" class="project-link">
+                                View Case Study 
+                                <img src="arrow-Right-pink.svg" alt="→" class="link-icon">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="Proctination-Infographic.png" alt="Procrastination Infographic">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="project-tag">Infographic</span>
+                                <span class="project-badge">UI Design</span>
+                            </div>
+                            <h3 class="project-title">Procrastination Infographic</h3>
+                            <p class="project-description">An infographic on the causes of procrastination.</p>
+                            <a href="https://drive.google.com/file/d/1cM0n9-E9D5IGf4t89iJ6to31g2_Xb9OD/view?usp=sharing" target="_blank" class="project-link">
+                                View Infographic
+                                <img src="arrow-Right-pink.svg" alt="→" class="link-icon">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="Emirate-Airlines.png" alt="Emirates Airlines Case Study">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="project-tag">Website</span>
+                                <span class="project-badge">UI/UX</span>
+                            </div>
+                            <h3 class="project-title">Emirates Airlines Case Study</h3>
+                            <p class="project-description">Redesign of the Emirates Airlines homepage.</p>
+                            <a href="https://drive.google.com/file/d/1YFun1ZHVuz_t61ERx1gafEWiRVmp4E2m/view?usp=sharing" target="_blank" class="project-link">
+                                View Case Study
+                                <img src="arrow-Right-pink.svg" alt="→" class="link-icon">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="InternGrub.png" alt="InternGrub Social Pages Enhancement">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="project-tag">Website</span>
+                                <span class="project-badge">UI/UX</span>
+                            </div>
+                            <h3 class="project-title">InternGrub Social Pages</h3>
+                            <p class="project-description">Redesign of the InternGrub Social Pages.</p>
+                            <a href="https://www.figma.com/design/to9xcZUJLGKvz02NAv4VfJ/InternGrub?node-id=0-1&t=Ff97pkEVci7TrOa4-1" class="project-link">
+                                View Figma File
+                                <img src="arrow-Right-pink.svg" alt="→" class="link-icon">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="Populus.png" alt="Populus Website Builder Tool Redesign">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="project-tag">Web App</span>
+                                <span class="project-badge">UI/UX</span>
+                            </div>
+                            <h3 class="project-title">Website Builder Tool Redesign</h3>
+                            <p class="project-description">Simplifying workflows for faster website building.</p>
+                            <a href="https://www.figma.com/proto/VOq5tsJzid5dq2gdePb3iG/Populus-Website-Builder-Tool?node-id=410-1069&viewport=1997%2C-1761%2C0.19&t=xaOHh1T5d0CNSMb6-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=465%3A25397&page-id=0%3A1" target="_blank" class="project-link">
+                                View Figma File
+                                <img src="arrow-Right-pink.svg" alt="→" class="link-icon">
+                            </a>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-left">
+                        <div class="section-header">
+                            <h2 class="section-title">Let's work together!</h2>
+                            <div class="title-line title-line-white"></div>
+                        </div>
+                        <p class="contact-text">Have a project in mind or want to say hello?<br>Feel free to reach out.</p>
+                        <a href="#" class="btn btn-send">Send Message</a>
+                    </div>
+                    <div class="contact-middle">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon"><img src="Email.svg" alt="Email"></div>
+                                <div class="contact-details"><h4>Email</h4><p>lamarajab55@gmail.com</p></div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon"><img src="Phone.svg" alt="Phone"></div>
+                                <div class="contact-details"><h4>Phone</h4><p>+961 70 437 828</p></div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon"><img src="Address.svg" alt="Location"></div>
+                                <div class="contact-details"><h4>Location</h4><p>Tripoli, Lebanon</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-right">
+                        <div class="map-placeholder"><img src="world-map.svg" alt="World Map"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo"><img src="MyLogo.svg" alt="Logo"></div>
+                <div class="footer-text"><p class="copyright">© 2026 Lama Rajab. All rights reserved.</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
