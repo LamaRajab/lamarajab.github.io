@@ -1,3 +1,18 @@
+// ============================================
+// INITIALIZE EMAILJS - WITH YOUR CREDENTIALS
+// ============================================
+
+const EMAILJS_PUBLIC_KEY = 'C1281xwfX4O2NAW8K';
+const EMAILJS_SERVICE_ID = 'service_u97eqto';
+const EMAILJS_TEMPLATE_ID = 'template_uaroyvs';
+
+// Initialize EmailJS
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+// ============================================
+// ACTIVE STATE FOR NAVIGATION LINKS
+// ============================================
+
 // Active state for navigation links
 const navLinks = document.querySelectorAll('nav ul li a');
 const sections = document.querySelectorAll('section');
@@ -179,13 +194,13 @@ function downloadCV() {
     // Data (4 Experiences, 3 Educations)
     const experienceItems = [
         { title: "UI/UX Designer", company: "InternGrup", date: "Mar 2026 - Apr 2026", description: "Enhanced the Social, Blogs, and Blog page designs to improve usability and engagement." },
-        { title: "UI/UX Designer Intern", company: "Interphase", date: "Sep 2025 — Dec 2025", description: "Redesigned Populus’ website builder to improve usability, efficiency, and overall user experience." },
-        { title: "Freelance Designer", company: "Self-employed", date: "Sep 2025", description: "Created a brand logo that reflects the client’s identity and strengthens brand recognition." },
-        { title: "Freelance Designer", company: "Self-employed", date: "Jun 2025", description: "Designed a physical menu aligned with the restaurant’s brand and customer experience." }
+        { title: "UI/UX Designer Intern", company: "Interphase", date: "Sep 2025 — Dec 2025", description: "Redesigned Populus' website builder to improve usability, efficiency, and overall user experience." },
+        { title: "Freelance Designer", company: "Self-employed", date: "Sep 2025", description: "Created a brand logo that reflects the client's identity and strengthens brand recognition." },
+        { title: "Freelance Designer", company: "Self-employed", date: "Jun 2025", description: "Designed a physical menu aligned with the restaurant's brand and customer experience." }
     ];
     
     const educationItems = [
-        { title: "UI/UX Certification", company: "SE Factory", date: "2025", description: "Completed SE Factory’s intensive 9-week UI/UX course, applying design principles through hands-on projects." },
+        { title: "UI/UX Certification", company: "SE Factory", date: "2025", description: "Completed SE Factory's intensive 9-week UI/UX course, applying design principles through hands-on projects." },
         { title: "UI/UX Certification", company: "Udemy", date: "2025", description: "Andrei Neagoie, Daniel Schifano | Complete Web & Mobile Designer: UI/UX, Figma, +more." },
         { title: "Bachelor in Computer Science", company: "Beirut Arab University", date: "2021 — 2025", description: "Earned my degree in Computer Science, gaining a solid foundation in programming, and problem-solving." }
     ];
@@ -608,3 +623,200 @@ function downloadCV() {
     }
 })();
 
+// ============================
+// ✨ SIMPLE SCROLL REVEAL
+// ============================
+const revealElements = document.querySelectorAll(
+    '.hero-section, .about-section, .resume-section, .projects-section, .contact-section'
+);
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal', 'active');
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+revealElements.forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+});
+
+// ============================================
+// CONTACT MODAL WITH EMAILJS - DIRECT EMAIL
+// ============================================
+
+const modal = document.getElementById('contactModal');
+const sendMessageBtn = document.querySelector('.btn-send');
+const closeBtn = document.querySelector('.modal-close');
+const contactForm = document.getElementById('contactForm');
+const modalSubmitBtn = document.querySelector('.modal-submit-btn');
+const formStatus = document.getElementById('formStatus');
+
+// Open modal when clicking Send Message
+if (sendMessageBtn) {
+    sendMessageBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+}
+
+// Close modal functions
+function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    if (contactForm) contactForm.reset();
+    if (formStatus) {
+        formStatus.innerHTML = '<i class="fas fa-envelope"></i> Your message will be sent directly to my email';
+        formStatus.className = 'modal-note';
+    }
+}
+
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+}
+
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal && modal.style.display === 'flex') {
+        closeModal();
+    }
+});
+
+// Handle form submission - DIRECT EMAIL (no external app)
+if (contactForm) {
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('modalName').value.trim();
+        const email = document.getElementById('modalEmail').value.trim();
+        const message = document.getElementById('modalMessage').value.trim();
+        
+        // Validate
+        if (!name || !email || !message) {
+            if (formStatus) {
+                formStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please fill in all fields';
+                formStatus.className = 'form-error';
+            }
+            return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            if (formStatus) {
+                formStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please enter a valid email address';
+                formStatus.className = 'form-error';
+            }
+            return;
+        }
+        
+        // Show loading state
+        if (modalSubmitBtn) {
+            modalSubmitBtn.classList.add('loading');
+            modalSubmitBtn.disabled = true;
+            modalSubmitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+        }
+        
+        // Disable inputs
+        const inputs = contactForm.querySelectorAll('input, textarea');
+        inputs.forEach(input => input.disabled = true);
+        
+        // Prepare template parameters
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            message: message,
+            moment_date: new Date().toLocaleString()
+        };
+        
+        try {
+            // Send email using EmailJS - THIS SENDS DIRECTLY, NO EMAIL APP
+            const response = await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                templateParams
+            );
+            
+            console.log('Email sent successfully!', response);
+            
+            // Show success
+            if (formStatus) {
+                formStatus.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! I will get back to you soon.';
+                formStatus.className = 'form-success';
+            }
+            
+            if (modalSubmitBtn) {
+                modalSubmitBtn.innerHTML = 'Message Sent! ✓';
+                modalSubmitBtn.classList.add('success');
+            }
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Close modal after delay
+            setTimeout(() => {
+                closeModal();
+                
+                // Reset button
+                if (modalSubmitBtn) {
+                    modalSubmitBtn.innerHTML = 'Send Message <img src="Right Arrow.svg" alt="→" class="btn-icon">';
+                    modalSubmitBtn.classList.remove('loading', 'success');
+                    modalSubmitBtn.disabled = false;
+                }
+                
+                // Re-enable inputs
+                inputs.forEach(input => input.disabled = false);
+                
+            }, 2000);
+            
+        } catch (error) {
+            console.error('Email sending failed:', error);
+            
+            let errorMessage = 'Failed to send message. ';
+            
+            if (error.text) {
+                errorMessage += error.text;
+            } else {
+                errorMessage += 'Please try again or email me directly at lamarajab55@gmail.com';
+            }
+            
+            if (formStatus) {
+                formStatus.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${errorMessage}`;
+                formStatus.className = 'form-error';
+            }
+            
+            // Reset button
+            if (modalSubmitBtn) {
+                modalSubmitBtn.innerHTML = 'Send Message <img src="Right Arrow.svg" alt="→" class="btn-icon">';
+                modalSubmitBtn.classList.remove('loading');
+                modalSubmitBtn.disabled = false;
+            }
+            
+            // Re-enable inputs
+            inputs.forEach(input => input.disabled = false);
+        }
+    });
+}
+
+// Add input focus effects for better UX
+const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+formInputs.forEach(input => {
+    input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+    });
+    input.addEventListener('blur', () => {
+        input.parentElement.classList.remove('focused');
+    });
+});
